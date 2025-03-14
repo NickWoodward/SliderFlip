@@ -24,20 +24,13 @@ export function Slider({
     "https://picsum.photos/id/234/500/300",
   ];
   return (
-    <div ref={ref} className="keen-slider">
-      {/* Initially empty */}
-      <div data-wrapper={0} className="keen-slider__slide number-slide1"></div>
-
+    <div ref={ref} className="keen-slider bg-slate-600">
       {pictures.map((picture, index) => {
         return (
-          <div
-            data-wrapper={index + 1}
-            key={index}
-            className="keen-slider__slide"
-          >
+          <div data-wrapper={index} key={index} className="keen-slider__slide">
             <img
               onClick={handleImageClick}
-              data-img={index + 1}
+              data-img={index}
               className="h-full object-cover"
               src={picture}
               alt=""

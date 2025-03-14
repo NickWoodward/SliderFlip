@@ -65,7 +65,7 @@ export const Flip2 = () => {
 
   return (
     <>
-      <div className="w-1/2">
+      <div className="w-[400px]">
         <Slider handleImageClick={clickHandler} />
       </div>
       <div className="main-wrapper">
