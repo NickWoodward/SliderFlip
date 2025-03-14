@@ -4,15 +4,13 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { useGSAP } from "@gsap/react";
+import { Slider } from "./Slider";
 
 gsap.registerPlugin(Flip, useGSAP);
 
-const images = [
-  "https://picsum.photos/id/28/400/400",
-  "https://picsum.photos/id/29/400/400",
-];
+const mainImage = "https://picsum.photos/id/28/400/400";
 
-export const Flip1 = () => {
+export const Flip2 = () => {
   const flipInstance = useRef<gsap.core.Tween>(null);
 
   const clickHandler = () => {
@@ -24,9 +22,9 @@ export const Flip1 = () => {
 
   useGSAP(
     () => {
-      const small = document.querySelector<HTMLImageElement>(".original img");
-
-      const large = document.querySelector<HTMLImageElement>(".inside img");
+      const small = document.querySelector<HTMLImageElement>('[data-img="1"]');
+      const large =
+        document.querySelector<HTMLImageElement>('[data-img="main"]');
 
       console.log(small, large);
       if (!(small && large)) return;
@@ -67,13 +65,11 @@ export const Flip1 = () => {
 
   return (
     <>
-      <div className="original">
-        <img src={images[0]} alt="" onClick={clickHandler} />
+      <div className="w-1/2">
+        <Slider handleImageClick={clickHandler} />
       </div>
-      <div className="slider">
-        <div className="inside">
-          <img src={images[1]} alt="" />
-        </div>
+      <div className="main-wrapper">
+        <img data-img={"main"} src={mainImage} alt="" onClick={clickHandler} />
       </div>
     </>
   );
